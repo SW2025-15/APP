@@ -1,0 +1,17 @@
+<h1><%= @post.title %></h1>
+
+<%# 画像の表示（Active Storage） %>
+<% if @post.images.attached? %>
+  <div class="post-images">
+    <% @post.images.each do |image| %>
+      <%# 画像サイズを調整して表示 %>
+      <%= image_tag image, style: "max-width: 400px; display: block; margin-bottom: 10px;" %>
+    <% end %>
+  </div>
+<% end %>
+
+<p>内容: <%= @post.body %></p>
+<p>投稿日: <%= @post.created_at.strftime("%Y年%m月%d日") %></p>
+
+<hr>
+<%= link_to '一覧へ戻る', posts_path %>

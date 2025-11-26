@@ -1,10 +1,74 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/*Kinpedia表示*/
+.main-title-container {
+  margin: 0px auto 0; /* 上マージン:50px, 左右マージン:auto (中央寄せ), 下マージン:0 */
+  text-align: center; /* コンテナ内のテキストを中央揃え */
+}
+
+.main-title-container h2 {
+  font-size: 2.0em; /* フォントサイズ2倍 */
+  padding: 20px; /* 内側余白設定 */
+}
+
+/*ログアウトボタンと新規投稿ボタン*/
+.header-actions {
+    font-size: 1.2em; /* フォントサイズ1.2倍 */
+    display: flex; /*リンクを並列にする*/
+    /*gap: 50px; /*リンク間に間をあける*/
+    justify-content: space-between;
+}
+
+/*ジャンル別と投稿一覧*/
+.main-content-wrapper {
+  display: flex; /* 💡 子要素(サイドバーとコンテンツ)を横並びにする */
+  width: 90%; /* 全体の幅を調整 */
+  margin: 20px auto; /* 画面中央に配置 */
+  gap: 50px;
+}
+
+/*ジャンル別*/
+.sidebar-left {
+  width: 130px; /* 幅 */
+  padding: 5px;
+  border: 1px solid black;
+  flex-shrink: 0; /* 幅が縮まないように */
+}
+
+/* ジャンルメニューの文字 */
+.genre-menu h3 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1em;
+}
+
+/*ジャンルリスト*/
+.genre-menu ul {
+  list-style: none; /* リストの点を非表示 */
+  padding: 0;
+}
+
+.genre-menu li a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+/*投稿全体*/
+.content-area {
+  flex-grow: 1; /* 残りスペースを全て使用 */
+  padding: 15px;
+}
+
+/*各投稿*/
+.post-list-section {
+  border: 1px solid #000; /* 投稿一覧の各セクションの枠線 */
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+/**/投稿内容
+.placeholder-box {
+  min-height: 80px;
+  background-color: #f8f8f8;
+  /* ここに投稿が入る */
+}
