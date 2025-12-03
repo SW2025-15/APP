@@ -13,5 +13,7 @@
 <p>内容: <%= @post.body %></p>
 <p>投稿日: <%= @post.created_at.strftime("%Y年%m月%d日") %></p>
 
+<%= link_to '投稿を削除する', @post, data: { turbo_method: :delete } %>
+
 <hr>
 <%= link_to '一覧へ戻る', posts_path %>
