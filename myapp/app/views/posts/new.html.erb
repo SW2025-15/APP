@@ -19,21 +19,21 @@
   </div>
 
   <div>
-    <%= f.label :body, "内容" %>
+    <%= f.label :body, "内容　　" %>
     <%= f.text_area :body %>
   </div>
   
-  <%# 複数の画像アップロードフィールド %>
+  <%# 複数画像アップロードフィールド %>
   <div>
     <%= f.label :images, "画像 (複数選択可)" %>
     <%= f.file_field :images, multiple: true %>
   </div>
   
-  <%# status カラムは今回は省略します（必要であれば追加） %>
+  <%# status カラムは今回は省略（statusによって投稿の状態を変化させる） %>
 
   <div>
-    <%= f.submit "投稿を完了する" %>
+    <%= f.submit "投稿" %>
   </div>
 <% end %>
 
-<%= link_to '一覧へ戻る', posts_path %>
+<%= link_to 'トップページ', posts_path %>

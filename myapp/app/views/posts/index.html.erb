@@ -1,7 +1,7 @@
 <h1>Kinpedia (Sanriko)</h1>
 
 <div class="header-actions">
-   <%= link_to '新規投稿', '/posts/new' %>
+   <%= link_to '新規投稿', new_post_path %>
    <%= link_to 'ログアウト', "#" %>
 </div>
 
@@ -9,7 +9,6 @@
   <h2>投稿一覧</h2>
 </div>
 
-<%# ジャンル別と投稿一覧 %>
 <div class="main-content-wrapper">
   
   <div class="sidebar-left">
@@ -22,6 +21,7 @@
           <li><%= link_to "図書館", "#" %></li>
           <li><%= link_to "食堂", "#" %></li>
           <li><%= link_to "トイレ", "#" %></li>
+          <li><%= link_to "飲食店", "#" %></li>
           <li><%= link_to "その他", "#" %></li>
       </ul>
     </div>
@@ -37,12 +37,19 @@
         </div>
     </div>
 
-    <div class="post-list-section">
-      <h3>喫煙所の場所一覧</h3>
-      <div class="placeholder-box">
-        <p>この投稿たちは仮で表示させてるだけです。</p>
-        </div>
-    </div>
+      <% @posts.each do |post| %>
+      <div class="post-list-section">
+        <h3><%= link_to post.title, post %></h3> <%# 詳細画面リンク %>
+        
+        <%# 画像を一枚だけ表示（サムネ） %>
+        <% if post.images.attached? && post.images.first %>
+        <%= image_tag post.images.first, style: "max-width: 100px; height: auto; float: left; margin-right: 10px;" %>
+        <% end %>
+        
+        <%# truncate （本文を省略して表示） %>
+        <p><%= truncate(post.body, length: 100) %></p>
+        <div style="clear: both;"></div>
+      </div>
+        <% end %>
   </div>
-
-</div>
+  </div>
