@@ -28,18 +28,14 @@
   </div>
 
   <div class="content-area">
-    
-    <%# 投稿ごとに線で区切る %>
-    <div class="post-list-section">
-      <h3>1号館 トイレの場所</h3>
-      <div class="placeholder-box">
-          <p>ここに投稿内容が書かれます。<br>写真も表示できるようにしたい。<br></p>
-        </div>
-    </div>
 
       <% @posts.each do |post| %>
+      
+      <%# 投稿ごとに線で区切る %>
       <div class="post-list-section">
-        <h3><%= link_to post.title, post %></h3> <%# 詳細画面リンク %>
+        <h3>
+          <%= link_to (post.title.presence || "（無題）"), post %>
+        </h3> <%# 詳細画面リンク(タイトルがない場合、showアクションが実行不可になり削除できないため、「無題」と表示) %>
         
         <%# 画像を一枚だけ表示（サムネ） %>
         <% if post.images.attached? && post.images.first %>
