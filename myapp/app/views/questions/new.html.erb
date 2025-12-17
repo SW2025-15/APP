@@ -1,2 +1,20 @@
-<h1>Questions#new</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
+<h1>質問を投稿する</h1>
+
+<%= form_with(model: @question) do |form| %>
+  <div class="field">
+    <%= form.label :title, "質問のタイトル" %>
+    <%= form.text_field :title, placeholder: "例：近代ユニパの使い方がわからない。。。" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body, "質問内容" %>
+    <%= form.text_area :body, rows: 5, placeholder: "詳細をここに書いてください" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "質問を投稿する" %>
+  </div>
+<% end %>
+
+<hr>
+<%= link_to '質問一覧に戻る', questions_path %>

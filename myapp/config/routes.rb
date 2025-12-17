@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get "users/create"
   
   resources :posts
-  resources :questions
+  resources :questions do
+    resources :answers, only: [:create, :destroy]
+  end
   
   root 'posts#index'
   get "posts/index"

@@ -1,2 +1,19 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<h1>質問コーナー</h1>
+
+<%= link_to '新しい質問をする', new_question_path, class: "header-link" %>
+<hr>
+
+<% if @questions.present? %>
+  <% @questions.each do |question| %>
+    <div class="question-item" style="border-bottom: 1px solid #eee; padding: 10px 0;">
+      <h3><%= link_to question.title, question %></h3>
+      <p><%= truncate(question.body, length: 50) %></p>
+      <small>投稿日: <%= question.created_at.strftime("%Y/%m/%d") %></small>
+    </div>
+  <% end %>
+<% else %>
+  <p>まだ質問はありません。</p>
+<% end %>
+
+<br>
+<%= link_to '投稿一覧', root_path %>

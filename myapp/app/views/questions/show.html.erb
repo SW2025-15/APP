@@ -1,2 +1,44 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<h1><%= @question.title %></h1>
+
+<div class="question-body">
+  <p><%= simple_format(@question.body) %></p>
+</div>
+
+<p><small>投稿日: <%= @question.created_at.strftime("%Y/%m/%d %H:%M") %></small></p>
+
+<hr>
+
+<h2>みんなからの回答</h2>
+
+<% if @question.answers.any? %>
+  <div class="answers-list">
+    <% @question.answers.each do |answer| %>
+      <div class="answer-item" style="background: #f9f9f9; padding: 15px; margin-bottom: 10px; border-radius: 5px;">
+        <p><%= simple_format(answer.body) %></p>
+        <small>投稿日時: <%= answer.created_at.strftime("%Y/%m/%d %H:%M") %></small>
+        
+        <div style="text-align: right;">
+          <%= button_to '削除', question_answer_path(@question, answer), method: :delete, style: "font-size: 10px; background: #ddd; border: none; padding: 3px 8px; cursor: pointer;" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>まだ回答はありません</p>
+<% end %>
+
+<hr>
+
+<h3>回答を投稿する</h3>
+
+<%= form_with(model: [@question, @question.answers.build]) do |form| %>
+  <div class="field">
+    <%= form.text_area :body, rows: 3, placeholder: "ここに回答を入力...", style: "width: 100%;" %>
+  </div>
+  <div class="actions" style="margin-top: 10px;">
+    <%= form.submit "回答する" %>
+  </div>
+<% end %>
+
+<hr>
+<%= link_to '質問一覧に戻る', questions_path %>
