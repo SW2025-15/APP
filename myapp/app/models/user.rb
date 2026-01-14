@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Devise設定
   devise :database_authenticatable, :registerable,
-        :rememberable, :validatable
+         :rememberable, :validatable
   
   # 学籍番号は10桁
   validates :student_id, presence: true, uniqueness: true, length: { is: 10 }, format: { with: /\A\d+\z/ }
