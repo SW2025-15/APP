@@ -39,3 +39,8 @@ production:
     <<: *default
     database: storage/production_cable.sqlite3
     migrations_paths: db/cable_migrate
+    
+    database: mysite_7l4i
+    username: mysite_7l4i_user
+    password: <%= ENV['zKHmu9vM'] %>
+    url: <%= ENV['https://github.com/HAL-EMELICH/Public.git'] %>
